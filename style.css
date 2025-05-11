@@ -1,0 +1,151 @@
+/* Global Reset and Custom Typography */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Merriweather', 'Georgia', serif;
+  background: linear-gradient(135deg, #f7f7f7 25%, #eaeaea 100%);
+  color: #2c2c2c;
+  line-height: 1.8;
+  padding: 30px;
+}
+
+/* Content containers with ribbon-like border accent */
+.boring-content,
+.hidden-content {
+  max-width: 800px;
+  margin: 50px auto;
+  background: #ffffff;
+  padding: 40px;
+  border-left: 10px solid #b71c1c;
+  border-right: 10px solid #b71c1c;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+}
+.boring-content::before,
+.hidden-content::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: 20px;
+  background: repeating-linear-gradient(
+    45deg,
+    #b71c1c,
+    #b71c1c 10px,
+    #ffffff 10px,
+    #ffffff 20px
+  );
+}
+
+/* Logo styling */
+.boring-content img {
+  display: block;
+  margin: 0 auto 25px;
+  max-width: 180px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+/* Headings */
+.boring-content h1 {
+  font-size: 2.5rem;
+  color: #b71c1c;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.hidden-content h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  color: #b71c1c;
+  margin-bottom: 20px;
+  position: relative;
+}
+.hidden-content h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #b71c1c;
+  margin-top: 8px;
+}
+
+/* Toggle button styled as subtle link */
+.toggle-button {
+  display: inline-block;
+  margin-top: 25px;
+  background: none;
+  color: #555;
+  border: none;
+  padding: 0;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: underline dotted;
+  cursor: pointer;
+  transition: color 0.3s ease, text-decoration-style 0.3s ease;
+}
+.toggle-button:hover {
+  color: #b71c1c;
+  text-decoration-style: solid;
+}
+
+/* Hidden by default with fade effect */
+.hidden-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(10px);
+}
+#toggle:checked ~ .hidden-content {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+#toggle:checked ~ .boring-content {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* List styling */
+.hidden-content ul {
+  list-style: square inside;
+  text-align: left;
+  margin-bottom: 25px;
+}
+.hidden-content li {
+  margin-bottom: 12px;
+  padding-left: 5px;
+}
+
+/* Contact card with accent stripe */
+.contact-card {
+  background: #fafafa;
+  border-left: 6px solid #b71c1c;
+  padding: 25px;
+  border-radius: 4px;
+  text-align: left;
+  font-family: 'Merriweather', serif;
+  position: relative;
+}
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  background: url('images/ribbon-pattern.png') center/cover no-repeat;
+  opacity: 0.1;
+}
+.contact-card h3 {
+  margin-bottom: 12px;
+  font-size: 1.25rem;
+}
+.contact-card p {
+  margin-bottom: 8px;
+}
